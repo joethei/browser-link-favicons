@@ -18,7 +18,6 @@
     "webextension-polyfill": "^0.8.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build manifest.json --config @parcel/config-webextension --target webext-prod",
     "package": "cd dist/webext-prod && web-ext build"
   },
