@@ -1,0 +1,35 @@
+{
+  "name": "browser-favicon-links",
+  "version": "1.0.0",
+  "description": "---",
+  "targets": {
+    "webext-dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    },
+    "webext-prod": {}
+  },
+  "devDependencies": {
+    "@parcel/config-webextension": "^2.0.1",
+    "parcel": "^2.0.1",
+    "web-ext": "^6.6.0",
+    "webextension-polyfill": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build manifest.json --config @parcel/config-webextension --target webext-prod",
+    "package": "cd dist/webext-prod && web-ext build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joethei/browser-favicon-links.git"
+  },
+  "author": "joethei",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/joethei/browser-favicon-links/issues"
+  },
+  "homepage": "https://github.com/joethei/browser-favicon-links#readme"
+}
