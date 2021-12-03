@@ -1,0 +1,47 @@
+name: Build addon
+
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x" # You might need to adjust this value to your own version
+      - name: Build
+        id: build
+        run: |
+          npm install -g yarn
+          yarn
+          yarn run build
+          yarn run package
+          ls
+          echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ github.ref }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload zip file
+        id: upload-zip
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: .dist/webext-prod/web-ext-artifacts/favicons_for_links-${{ steps.build.outputs.tag_name }}.zip
+          asset_name: favicons_for_links--${{ steps.build.outputs.tag_name }}.zip
+          asset_content_type: application/zip
