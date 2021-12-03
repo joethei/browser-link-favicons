@@ -1,7 +1,7 @@
 {
   "name": "browser-favicon-links",
-  "version": "1.0.0",
-  "description": "---",
+  "version": "0.1.0",
+  "description": "Browser addon to show the favicon of a linked page",
   "targets": {
     "webext-dev": {
       "sourceMap": {
@@ -19,13 +19,13 @@
   },
   "scripts": {
     "build": "parcel build manifest.json --config @parcel/config-webextension --target webext-prod",
-    "package": "cd dist/webext-prod && web-ext build"
+    "package": "cd dist/webext-prod && zip -r favicon_for_links.zip ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joethei/browser-favicon-links.git"
   },
-  "author": "joethei",
+  "author": "Johannes Theiner",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/joethei/browser-favicon-links/issues"

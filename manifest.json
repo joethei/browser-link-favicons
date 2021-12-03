@@ -1,7 +1,11 @@
 {
   "manifest_version": 2,
-  "version": "1.0",
+  "version": "0.1.0",
   "name": "Favicons for links",
+  "author": "Johannes Theiner",
+  "homepage_url": "https://github.com/joethei/browser-favicon-links",
+
+
   "permissions": [
     "webRequest",
     "storage"
