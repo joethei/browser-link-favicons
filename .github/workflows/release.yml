@@ -40,4 +40,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          asset_paths: '["./dist/webext-prod/web-ext-artifacts/favicon_for_links.zip"]'
+          asset_paths: '["./dist/webext-prod/favicon_for_links.zip"]'
