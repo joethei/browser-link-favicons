@@ -1,4 +1,4 @@
-name: Build addon for firefox
+name: Build addon
 
 on:
   push:
@@ -15,8 +15,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "14.x" # You might need to adjust this value to your own version
-      - name: Build
-        id: build
+      - name: Build firefox
+        id: build-ff
         run: |
           npm install -g yarn
           yarn
@@ -25,6 +25,15 @@ jobs:
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
           mv distribution/favicon_for_links.zip distribution/favicon_for_links_firefox.zip
+
+      - name: Build chromium
+        id: build-chromium
+        run: |
+          sudo apt install jq --yes
+          cd distribution
+          cat <<< $(jq 'del(.browser_specific_settings)' manifest.json) > manifest.json
+          cat <<< $(jq 'del(.applications)' manifest.json) > manifest.json
+          mv favicon_for_links.zip favicon_for_links_chromium.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
