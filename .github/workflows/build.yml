@@ -25,7 +25,6 @@ jobs:
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
           mv distribution/favicon_for_links.zip distribution/favicon_for_links_firefox.zip
-
       - name: Build chromium
         id: build-chromium
         run: |
@@ -33,7 +32,9 @@ jobs:
           cd distribution
           cat <<< $(jq 'del(.browser_specific_settings)' manifest.json) > manifest.json
           cat <<< $(jq 'del(.applications)' manifest.json) > manifest.json
-          mv favicon_for_links.zip favicon_for_links_chromium.zip
+          cd ..
+          yarn run package
+          mv distribution/favicon_for_links.zip distribution/favicon_for_links_chromium.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
