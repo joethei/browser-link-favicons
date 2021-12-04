@@ -1,6 +1,3 @@
-.idea
-*.iml
-package-lock.json
-dist/
 node_modules
+distribution
 .parcel-cache

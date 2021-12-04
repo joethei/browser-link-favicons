@@ -1,4 +1,4 @@
-name: Build addon
+name: Build addon for firefox
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
     tags:
       - "*" # Push events to matching any tag format, i.e. 1.0, 20.15.10
 jobs:
-  build:
+  build-ff:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,6 +24,7 @@ jobs:
           yarn run package
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
+          mv distribution/favicon_for_links.zip distribution/favicon_for_links_firefox.zip
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -40,4 +41,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          asset_paths: '["./dist/webext-prod/favicon_for_links.zip"]'
+          asset_paths: '["./distribution/*.zip"]'

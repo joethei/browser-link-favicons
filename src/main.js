@@ -1,8 +1,9 @@
+const browser = require("webextension-polyfill");
+
 async function processLinks(ignoredPages) {
-    const ignored = ignoredPages.ignored.split("\n");
     const arr = document.getElementsByTagName("a");
     for (let arrElement of arr) {
-        await prependIcon(arrElement, ignored);
+        await prependIcon(arrElement, ignoredPages.ignored.split("\n"));
     }
 }
 
@@ -46,15 +47,14 @@ function hasIcon(el) {
 async function getIconURL(url) {
     const domain = new URL(url);
 
-    const source = await browser.storage.sync.get("source");
-    if (source.source === "google") {
-        return "https://www.google.com/s2/favicons?domain=" + domain.hostname;
-    }
-    if (source.source === "duckduckgo") {
-        return "https://icons.duckduckgo.com/ip3/" + domain.hostname + ".ico";
-    }
+	const setting = await browser.storage.sync.get("iconProvider");
+	if (setting.iconProvider === "google") {
+		return "https://www.google.com/s2/favicons?domain=" + domain.hostname;
+	}
+	if (setting.iconProvider === "duckduckgo") {
+		return "https://icons.duckduckgo.com/ip3/" + domain.hostname + ".ico";
+	}
 }
 
-let ignoredPages = browser.storage.sync.get("ignored");
-ignoredPages.then(processLinks);
-
+const settings = browser.storage.sync.get("ignored");
+settings.then(processLinks);
