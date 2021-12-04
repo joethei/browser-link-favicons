@@ -18,7 +18,7 @@ jobs:
       - name: Build
         id: build
         run: |
-          apt install jq --yes
+          sudo apt install jq --yes
           cat <<< $(jq 'del(.browser_specific_settings)' manifest.json) > manifest.json
           cat <<< $(jq 'del(.applications)' manifest.json) > manifest.json
           npm install -g yarn
