@@ -1,6 +1,6 @@
 {
   "name": "Link Favicons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "homepage_url": "https://github.com/joethei/browser-favicon-links",
   "manifest_version": 2,
@@ -15,6 +15,9 @@
 	"gecko": {
 	  "id": "favicon-link@joethei.xyz"
 	}
+  },
+  "icons": {
+	"128": "icon.png"
   },
   "permissions": [
 	"storage",

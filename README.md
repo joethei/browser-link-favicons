@@ -14,4 +14,11 @@ Browser Addon to see the favicon of a page next to the link
 Get it for [Firefox](https://addons.mozilla.org/de/firefox/addon/favicons-for-links/)
 <!--,[Chromium](https://chrome.google.com/webstore/detail/aclaajgmmfdoclebhdljjpdbnnhdcida/preview?hl=en-GB&authuser=0)-->
 
-This extension requests the favicon for the link from a Google or DuckDuckGo API.
+You can select between these providers in the settings:
+- Google
+- DuckDuckGo
+- [Icon Horse](https://icon.horse/)
+- [Splitbee](https://github.com/splitbee/favicon-resolver)
+
+
+Icon from: https://www.wishforge.games/
