@@ -1,4 +1,5 @@
 const browser = require("webextension-polyfill");
+const isFirefox = !chrome.app;
 
 async function processLinks(ignoredPages) {
     const arr = document.getElementsByTagName("a");
@@ -37,15 +38,29 @@ async function prependIcon(element, ignored) {
     const el = document.createElement("img");
     el.src = await getIconURL(href);
     el.style.height = "1em";
-	el.style.verticalAlign = "bottom";
-	el.style.marginBottom = "3px";
-	el.style.marginLeft = "0";
+	el.style.width = "auto";
+	el.style.verticalAlign = "middle";
+	el.style.marginLeft = "0.2em";
+	el.style.marginRight = "0.2em";
+	el.style.display = "inline-block";
+
+	//make sure the image is not blurry
+	//condition is needed because chrome does not care about standards
+	if(isFirefox) {
+		el.style.imageRendering = "crisp-edges";
+	}else {
+		el.style.imageRendering = "-webkit-optimize-contrast";
+	}
     element.prepend(el);
 }
 
 function hasIcon(el) {
     if (el.getElementsByTagName("img").length > 0) return true;
     if (el.getElementsByTagName("svg").length > 0) return true;
+
+	//ignore all that don`t have any content
+	if (!el.innerHTML) return true;
+	if (!el.textContent) return true;
 }
 
 async function getIconURL(url) {

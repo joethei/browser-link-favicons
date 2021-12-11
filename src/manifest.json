@@ -1,16 +1,10 @@
 {
   "name": "Link Favicons",
-  "version": "0.1.6",
-  "description": "",
-  "homepage_url": "https://github.com/joethei/browser-favicon-links",
+  "version": "0.1.7",
+  "description": "See the favicon for a linked website.",
+  "homepage_url": "https://github.com/joethei/browser-link-favicons",
   "manifest_version": 2,
   "minimum_chrome_version": "74",
-  "applications": {
-	"gecko": {
-	  "id": "favicon-link@joethei.xyz",
-	  "strict_min_version": "67.0"
-	}
-  },
   "browser_specific_settings": {
 	"gecko": {
 	  "id": "favicon-link@joethei.xyz"
@@ -20,8 +14,7 @@
 	"128": "icon.png"
   },
   "permissions": [
-	"storage",
-	"webRequest"
+	"storage"
   ],
   "options_ui": {
 	"chrome_style": true,
