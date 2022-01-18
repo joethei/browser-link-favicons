@@ -11,7 +11,7 @@ Browser Addon to see the favicon of a page next to the link.
 ![Firefox Demo](https://i.joethei.space/firefox_2CVCibMnD0.png)
 <!--![Chromium Demo](https://i.joethei.space/chrome_Sy1je7UMHL.png)-->
 
-Get it for [Firefox](https://addons.mozilla.org/de/firefox/addon/favicons-for-links/)
+Get it for [Firefox](https://addons.mozilla.org/firefox/addon/favicons-for-links/)
 <!--,[Chromium](https://chrome.google.com/webstore/detail/aclaajgmmfdoclebhdljjpdbnnhdcida/preview?hl=en-GB&authuser=0)-->
 
 You can select between these providers in the settings:
