@@ -1,0 +1,35 @@
+img.link-favicon {
+	height: 1em;
+	width: auto;
+	vertical-align: middle;
+	margin-left: 0.2em;
+	margin-right: 0.2em;
+	display: inline-block;
+}
+
+img.link-favicon[data-domain*="google."] {
+	height: 1.5em;
+	margin-left: -1.5em;
+}
+
+/*Don't show a icon next to the login button*/
+img.link-favicon[data-site*="accounts.google."][data-domain*="google."] {
+	display: none !important;
+}
+
+/*moving text in the infobox so it does not overlap*/
+a.ruhjFe img.link-favicon[data-domain*="google."] {
+	margin-left: unset;
+}
+
+/*DuckDuckGo has its own icons, and those cannot be detected in the code*/
+img.link-favicon[data-domain*="duckduckgo."] {
+	display: none !important;
+}
+
+/*Google requires some trickery to look correct*/
+.jtfYYd,
+.kWxLod {
+	overflow: unset !important;
+	contain: layout !important;
+}

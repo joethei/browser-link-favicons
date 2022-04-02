@@ -16,6 +16,7 @@ async function prependIcon(element, ignored) {
     try {
         hostname = new URL(href).hostname;
     } catch (e) {
+		console.log(href);
         console.log(e);
     }
     if (!hostname) {
@@ -36,13 +37,11 @@ async function prependIcon(element, ignored) {
     }
 
     const el = document.createElement("img");
+	el.classList.add("link-favicon");
     el.src = await getIconURL(href);
-    el.style.height = "1em";
-	el.style.width = "auto";
-	el.style.verticalAlign = "middle";
-	el.style.marginLeft = "0.2em";
-	el.style.marginRight = "0.2em";
-	el.style.display = "inline-block";
+
+	el.dataset.site = hostname;
+	el.dataset.domain = window.location.hostname;
 
 	//make sure the image is not blurry
 	//condition is needed because chrome does not care about standards
@@ -71,6 +70,9 @@ async function getIconURL(url) {
 	if (setting.iconProvider === "google") {
 		return "https://www.google.com/s2/favicons?domain=" + domain.hostname;
 	}
+	if (setting.iconProvider === "googlecn") {
+		return "https://www.google.cn/s2/favicons?domain=" + domain.hostname;
+	}
 	if (setting.iconProvider === "duckduckgo") {
 		return "https://icons.duckduckgo.com/ip3/" + domain.hostname + ".ico";
 	}
@@ -80,7 +82,16 @@ async function getIconURL(url) {
 	if (setting.iconProvider === "splitbee") {
 		return  "https://favicon.splitbee.io/?url=" + domain.hostname;
 	}
+	if(setting.iconProvider === "yandex") {
+		return "https://favicon.yandex.net/favicon/" + domain.hostname;
+	}
 }
+
+const fileref = document.createElement("link");
+fileref.setAttribute("rel", "stylesheet");
+fileref.setAttribute("type", "text/css");
+fileref.setAttribute("href", "resource://favicon-link@joethei.xyz/main.css");
+document.getElementsByTagName("head")[0].appendChild(fileref);
 
 const settings = browser.storage.sync.get("ignored");
 settings.then(processLinks);

@@ -7,7 +7,7 @@
 		"lint:css": "stylelint src/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-	  	"package": "cd distribution && zip -r favicon_for_links.zip .",
+		"package": "cd distribution && zip -r favicon_for_links.zip .",
 		"watch": "parcel watch src/manifest.json --dist-dir distribution --no-cache --no-hmr"
 	},
 	"browserslist": [

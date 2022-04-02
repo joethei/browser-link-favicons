@@ -16,11 +16,12 @@ Get it for [Firefox](https://addons.mozilla.org/de/firefox/addon/favicons-for-li
 
 You can select between these providers in the settings:
 
-| Provider                                                           | Max Size  | Fallback                | max requests    |
-|--------------------------------------------------------------------|-----------|-------------------------|-----------------|
-| Google                                                             | 16x16px   | default icon            | no limit️       |
-| DuckDuckGo                                                         | none      | default icon            | no limit        |
-| [Icon Horse](https://icon.horse/)                                  | none      | automatically generated | fair use policy |
-| [Splitbee](https://github.com/splitbee/favicon-resolver)           | none      | yes (taken from Google) | unknown         |
+| Provider                                                           | Max Size   | Fallback                | max requests    |
+|--------------------------------------------------------------------|------------|-------------------------|-----------------|
+| Google                                                             | 16 * 16 px | default icon            | no limit️       |
+| DuckDuckGo                                                         | none       | default icon            | no limit        |
+| Yandex| 16 * 16 px | none                    | no limit        |
+| [Icon Horse](https://icon.horse/)                                  | none       | automatically generated | fair use policy |
+| [Splitbee](https://github.com/splitbee/favicon-resolver)           | none       | yes (taken from Google) | unknown         |
 ---
 Icon from: https://www.wishforge.games/
