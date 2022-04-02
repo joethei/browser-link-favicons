@@ -1,6 +1,6 @@
 {
   "name": "Link Favicons",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "See the favicon for a linked website.",
   "homepage_url": "https://github.com/joethei/browser-link-favicons",
   "manifest_version": 2,
