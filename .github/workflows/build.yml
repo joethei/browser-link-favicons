@@ -18,6 +18,7 @@ jobs:
       - name: Build firefox
         id: build-ff
         run: |
+          mkdir dist
           cd dist
           npm install
           npm run build
