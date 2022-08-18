@@ -18,11 +18,10 @@ jobs:
       - name: Build firefox
         id: build-ff
         run: |
-          npm install -g yarn
-          mkdir dist
-          yarn
-          yarn run build
-          yarn run package
+          cd dist
+          npm install
+          npm run build
+          npm run package
           ls
           echo "::set-output name=tag_name::$(git tag --sort version:refname | tail -n 1)"
           mv distribution/favicon_for_links.zip dist/favicon_for_links_firefox.zip
@@ -33,7 +32,7 @@ jobs:
           cd distribution
           cat <<< $(jq 'del(.browser_specific_settings)' manifest.json) > manifest.json
           cd ..
-          yarn run package
+          npm run package
           mv distribution/favicon_for_links.zip dist/favicon_for_links_chromium.zip
       - name: Create Release
         id: create_release

@@ -14,7 +14,8 @@
 	"128": "icon.png"
   },
   "permissions": [
-	"storage"
+	"storage",
+	"*://*/*"
   ],
   "options_ui": {
 	"chrome_style": true,
@@ -32,5 +33,9 @@
 		"main.css"
 	  ]
 	}
-  ]
+  ],
+  "background": {
+	"scripts": ["background.js"],
+	"persistent": false
+  }
 }

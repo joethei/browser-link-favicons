@@ -3,3 +3,4 @@ distribution
 .parcel-cache
 .idea
 *.iml
+package-lock.json
