@@ -19,7 +19,6 @@ jobs:
         id: build-ff
         run: |
           mkdir dist
-          cd dist
           npm install
           npm run build
           npm run package
